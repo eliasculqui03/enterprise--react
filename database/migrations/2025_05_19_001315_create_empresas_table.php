@@ -13,6 +13,21 @@ return new class extends Migration
     {
         Schema::create('empresas', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre', 100);
+            $table->string('email', 100);
+            $table->string('telefono', 9)->nullable();
+            $table->string('direccion', 100)->nullable();
+            $table->string('website', 100)->nullable();
+            $table->string('facebook', 100)->nullable();
+            $table->string('youtube', 100)->nullable();
+            $table->string('tiktok', 100)->nullable();
+            $table->text('descripcion')->nullable();
+            $table->string('urlfoto', 100)->nullable();
+            $table->boolean('publicado')->default(true);
+            $table->integer('orden')->nullable();
+            $table->integer('visitas')->nullable();
+            $table->foreignId('categoria_id')->constrained('categorias');
+            $table->foreignId('user_id')->nullable()->constrained('users');
             $table->timestamps();
         });
     }
